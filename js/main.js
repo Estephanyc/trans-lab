@@ -35,7 +35,7 @@ const verSaldo = () => {
             bipNumber = inputValue;
         }
 
-        fetch(`https://bip.franciscocapone.com/api/getSaldo/${bipNumber}`)
+        fetch(`http://bip.franciscocapone.com/api/getSaldo/${bipNumber}`)
             .then(response => response.json())
             .then(mydata => showSaldo(mydata));
 
@@ -65,7 +65,7 @@ const calcularTarifa = () => {
         }
 
 
-        fetch(`https://bip.franciscocapone.com/api/getSaldo/${bipNumber}`)
+        fetch(`http://bip.franciscocapone.com/api/getSaldo/${bipNumber}`)
             .then(response => response.json())
             .then(mydata => calculate(mydata));
 
