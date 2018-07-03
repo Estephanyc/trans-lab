@@ -3,7 +3,9 @@ const validate = () => {
     let pass = document.getElementById('inputPassword').value.length
     if (pass <= 8) {
         email = document.getElementById('inputEmail').value
+        localStorage.setItem('email', email)
         options();
+        
     }
     else {
         alert('Ingrese una contraseña de 8 caracteres maximo y solo numeros')
@@ -106,7 +108,10 @@ const options = () => {
     showOrHidden('signIn', 'none'), showOrHidden('menu', 'block'),
         showOrHidden('options', 'block'), showOrHidden('faq', 'none')
     showOrHidden('perfil', 'none')
-
+    let emailText = localStorage.getItem('email')
+    let emailDiv = document.getElementById('show-email');
+    let emailNode = document.createTextNode(emailText);
+    emailDiv.appendChild(emailNode)
 }
 const faq = () => {
     showOrHidden('options', 'none'), showOrHidden('ver-saldo', 'none'),
