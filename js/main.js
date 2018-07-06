@@ -37,14 +37,15 @@ const verSaldo = () => {
             bipNumber = inputValue;
         }
 
-        fetch(`http://bip.franciscocapone.com/api/getSaldo/${bipNumber}`)
+        fetch(`http://www.psep.cl/api/Bip.php?&numberBip=${bipNumber}`)
             .then(response => response.json())
             .then(mydata => showSaldo(mydata));
 
         const showSaldo = (mydata) => {
-            let saldo = mydata.saldo.slice(1)
+            let saldo = mydata["Saldo  tarjeta"];
+            console.log(saldo)
             let saldoDiv = document.getElementById('ver-saldo')
-            createElement(saldoDiv, 'p', '$' + saldo, 'total');
+            createElement(saldoDiv, 'p', saldo, 'total');
         }
     })
 }
@@ -67,13 +68,13 @@ const calcularTarifa = () => {
         }
 
 
-        fetch(`http://bip.franciscocapone.com/api/getSaldo/${bipNumber}`)
+        fetch(`http://www.psep.cl/api/Bip.php?&numberBip=${bipNumber}`)
             .then(response => response.json())
             .then(mydata => calculate(mydata));
 
         const calculate = (mydata) => {
 
-            let saldo = (mydata.saldo.slice(1))
+            let saldo = mydata["Saldo  tarjeta"].slice(1)
             saldo = saldo.split('.').join("");
             if (horarios == '760') {
                 saldo = saldo - 760
